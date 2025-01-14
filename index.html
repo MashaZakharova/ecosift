@@ -22,7 +22,7 @@
       padding: 20px;
       max-width: 400px;
       width: 100%;
-      text-align: center; /* Center-align text within the container */
+      text-align: center;
     }
     h2 {
       margin-top: 0;
@@ -32,7 +32,7 @@
       display: block;
       margin-bottom: 8px;
       font-weight: bold;
-      text-align: left; /* Align labels to the left for better readability */
+      text-align: left;
     }
     input[type="number"],
     select {
@@ -46,7 +46,7 @@
     button {
       width: 100%;
       padding: 10px;
-      background-color: #006400; /* Dark green */
+      background-color: #4CAF50; /* Ecosift-inspired green */
       color: white;
       border: none;
       border-radius: 4px;
@@ -54,12 +54,12 @@
       cursor: pointer;
     }
     button:hover {
-      background-color: #004d00; /* Darker green on hover */
+      background-color: #45a049;
     }
     .result {
       margin-top: 15px;
       font-size: 1.2em;
-      color: #006400; /* Dark green */
+      color: #4CAF50;
     }
   </style>
 </head>
@@ -84,16 +84,28 @@
   </div>
 
   <script>
+    // Carbon emission factors (kg CO2 per GB per year)
+    const emissionFactors = {
+      local: 0.05,
+      cloud: 0.02,
+      server: 0.08
+    };
+
     function calculate() {
       const dataSize = parseFloat(document.getElementById('dataSize').value);
       const storageType = document.getElementById('storageType').value;
 
-      google.script.run
-        .withSuccessHandler(function(result) {
-          document.getElementById('result').innerHTML =
-            `Estimated carbon emissions: <strong>${result} kg CO₂/year</strong>`;
-        })
-        .calculateEmissions(dataSize, storageType);
+      if (isNaN(dataSize) || dataSize <= 0) {
+        document.getElementById('result').innerHTML = 
+          `<span style="color: red;">Please enter a valid data size!</span>`;
+        return;
+      }
+
+      const factor = emissionFactors[storageType] || 0;
+      const emissions = (dataSize * factor).toFixed(2);
+
+      document.getElementById('result').innerHTML = 
+        `Estimated carbon emissions: <strong>${emissions} kg CO₂/year</strong>`;
     }
   </script>
 </body>
