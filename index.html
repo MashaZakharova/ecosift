@@ -61,6 +61,14 @@
       font-size: 1.2em;
       color: #006400; /* Dark green */
     }
+    .comparison {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #006400; /* Dark green */
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -81,6 +89,7 @@
     </form>
 
     <div class="result" id="result"></div>
+    <div class="comparison" id="comparison" style="display: none;"></div>
   </div>
 
   <script>
@@ -102,6 +111,7 @@
       if (isNaN(dataSize) || dataSize <= 0) {
         document.getElementById('result').innerHTML = 
           `<span style="color: red;">Please enter a valid data size!</span>`;
+        document.getElementById('comparison').style.display = 'none';
         return;
       }
 
@@ -114,10 +124,15 @@
 
       // Update result with comparison
       document.getElementById('result').innerHTML = `
-        Estimated carbon emissions: <strong>${emissions} kg CO₂/year</strong><br>
-        This is equivalent to driving <strong>${carMiles} miles</strong> in a car or 
-        streaming <strong>${streamingHours} hours</strong> of HD video.
+        Estimated carbon emissions: <strong>${emissions} kg CO₂/year</strong>
       `;
+
+      document.getElementById('comparison').innerHTML = `
+        This is equivalent to:<br>
+        <strong>${carMiles} miles</strong> driven in a car<br>
+        or <strong>${streamingHours} hours</strong> of HD video streaming.
+      `;
+      document.getElementById('comparison').style.display = 'block'; // Show the comparison box
     }
   </script>
 </body>
