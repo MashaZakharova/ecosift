@@ -91,6 +91,10 @@
       server: 0.08
     };
 
+    // Conversion factors for comparisons
+    const carEmissionPerMile = 0.4; // kg CO2 per mile
+    const streamingEmissionPerHour = 0.04; // kg CO2 per hour of HD video
+
     function calculate() {
       const dataSize = parseFloat(document.getElementById('dataSize').value);
       const storageType = document.getElementById('storageType').value;
@@ -102,10 +106,18 @@
       }
 
       const factor = emissionFactors[storageType] || 0;
-      const emissions = (dataSize * factor).toFixed(2);
+      const emissions = (dataSize * factor).toFixed(2); // Total emissions in kg CO2
 
-      document.getElementById('result').innerHTML = 
-        `Estimated carbon emissions: <strong>${emissions} kg CO₂/year</strong>`;
+      // Comparisons
+      const carMiles = (emissions / carEmissionPerMile).toFixed(1); // Miles driven
+      const streamingHours = (emissions / streamingEmissionPerHour).toFixed(1); // Hours of streaming
+
+      // Update result with comparison
+      document.getElementById('result').innerHTML = `
+        Estimated carbon emissions: <strong>${emissions} kg CO₂/year</strong><br>
+        This is equivalent to driving <strong>${carMiles} miles</strong> in a car or 
+        streaming <strong>${streamingHours} hours</strong> of HD video.
+      `;
     }
   </script>
 </body>
