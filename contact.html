@@ -34,19 +34,32 @@
       font-weight: bold;
     }
     input[type="text"],
-    input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
+    input[type="email"],
+    input[type="checkbox"] {
+      margin: 5px 0;
     }
     .checkbox-group {
       margin: 10px 0;
     }
-    .checkbox-group label {
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .checkbox-item label {
+      margin-left: 8px;
       font-weight: normal;
-      display: block;
+    }
+    .other-container {
+      display: flex;
+      align-items: center;
+    }
+    .other-container input[type="text"] {
+      margin-left: 10px;
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
     button {
       background-color: #165e3b;
@@ -76,14 +89,19 @@
 
       <label>What are you interested in? (select all that apply)</label>
       <div class="checkbox-group">
-        <input type="checkbox" id="audit" name="interest" value="Free data audit">
-        <label for="audit">Free data audit</label>
-
-        <input type="checkbox" id="access" name="interest" value="Early access program">
-        <label for="access">Early access program</label>
-
-        <input type="checkbox" id="other" name="interest" value="Other">
-        <label for="other">Other</label>
+        <div class="checkbox-item">
+          <input type="checkbox" id="audit" name="interest" value="Free data audit">
+          <label for="audit">Free data audit</label>
+        </div>
+        <div class="checkbox-item">
+          <input type="checkbox" id="access" name="interest" value="Early access program">
+          <label for="access">Early access program</label>
+        </div>
+        <div class="checkbox-item other-container">
+          <input type="checkbox" id="other" name="interest" value="Other">
+          <label for="other">Other</label>
+          <input type="text" id="otherText" name="otherDetails" placeholder="Please specify">
+        </div>
       </div>
 
       <button type="submit">Submit</button>
