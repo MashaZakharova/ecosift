@@ -34,9 +34,12 @@
       font-weight: bold;
     }
     input[type="text"],
-    input[type="email"],
-    input[type="checkbox"] {
-      margin: 5px 0;
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
     }
     .checkbox-group {
       margin: 10px 0;
@@ -80,7 +83,8 @@
 <body>
   <div class="form-container">
     <h2>Get in Touch</h2>
-    <form action="mailto:masha@ecosift.io" method="POST" enctype="text/plain">
+    <!-- Updated action URL to use your Formspree endpoint -->
+    <form action="https://formspree.io/f/xldjdpok" method="POST">
       <label for="companyName">Your Company Name:</label>
       <input type="text" id="companyName" name="companyName" required>
 
