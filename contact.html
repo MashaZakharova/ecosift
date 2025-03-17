@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Get in Touch - Ecosift</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+    h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .checkbox-group {
+      margin: 10px 0;
+    }
+    .checkbox-group label {
+      font-weight: normal;
+      display: block;
+    }
+    button {
+      background-color: #165e3b;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #133d2a;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Get in Touch</h2>
+    <form action="mailto:masha@ecosift.io" method="POST" enctype="text/plain">
+      <label for="companyName">Your Company Name:</label>
+      <input type="text" id="companyName" name="companyName" required>
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label>What are you interested in? (select all that apply)</label>
+      <div class="checkbox-group">
+        <input type="checkbox" id="audit" name="interest" value="Free data audit">
+        <label for="audit">Free data audit</label>
+
+        <input type="checkbox" id="access" name="interest" value="Early access program">
+        <label for="access">Early access program</label>
+
+        <input type="checkbox" id="other" name="interest" value="Other">
+        <label for="other">Other</label>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
